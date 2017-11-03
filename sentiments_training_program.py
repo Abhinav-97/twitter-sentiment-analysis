@@ -41,6 +41,7 @@ tknz = TweetTokenizer()
 
 def find_features(document):
 	# words = set(document)
+	document = re.sub('[?\'.]','',document)
 	features = {}
 	for w in tknz.tokenize(document):
 		features[w.lower()] = (w.lower() in word_features)
@@ -90,8 +91,8 @@ for tweet in tweets:
 
 all_words = nltk.FreqDist(all_words)
 all_words = (all_words.most_common(3500))
-for word, freq in all_words:
-	print(word.encode('utf-8'),freq)
+# for word, freq in all_words:
+# 	print(word.encode('utf-8'),freq)
 
 word_features = [x[0] for x in all_words]
 
@@ -102,78 +103,90 @@ for word in word_features:
 		word_features1.append(word)
 
 word_features = word_features1
-	
+print(word_features)
 
-print(find_features(sentiment_tweets[1][0]))
-feature_set = [(find_features(tweet), category) for (tweet, category) in sentiment_tweets]
-training_set = feature_set[:9000]
-testing_set = feature_set[9000:] 
+
+# feature_set = [(find_features(tweet), category) for (tweet, category) in sentiment_tweets]
+# training_set = feature_set[:9000]
+# testing_set = feature_set[9000:] 
 # classifier.show_most_informative_features(25)
 
-MultinomialNB_classifier = SklearnClassifier(MultinomialNB())
-MultinomialNB_classifier.train(feature_set)
+# MultinomialNB_classifier = SklearnClassifier(MultinomialNB())
+# MultinomialNB_classifier.train(feature_set)
 # print('MultinomialNB classifier accuracy',nltk.classify.accuracy(MultinomialNB_classifier, testing_set))
-mnb_classifier_doc = open('mnb_classifier.pkl','wb')
-pickle.dump(MultinomialNB_classifier,mnb_classifier_doc)
-mnb_classifier_doc.close()
+# mnb_classifier_doc = open('mnb_classifier.pkl','wb')
+# pickle.dump(MultinomialNB_classifier,mnb_classifier_doc)
+# mnb_classifier_doc.close()
 
-BernoulliNB_classifier = SklearnClassifier(BernoulliNB())
-BernoulliNB_classifier.train(feature_set)
-print('BernoulliNB_classifier accuracy',nltk.classify.accuracy(BernoulliNB_classifier, testing_set))
-bernoulli_classifier_doc = open('bernoulli_classifier.pkl','wb')
-pickle.dump(BernoulliNB_classifier,bernoulli_classifier_doc)
-bernoulli_classifier_doc.close()
+# BernoulliNB_classifier = SklearnClassifier(BernoulliNB())
+# BernoulliNB_classifier.train(feature_set)
+# print('BernoulliNB_classifier accuracy',nltk.classify.accuracy(BernoulliNB_classifier, testing_set))
+# bernoulli_classifier_doc = open('bernoulli_classifier.pkl','wb')
+# pickle.dump(BernoulliNB_classifier,bernoulli_classifier_doc)
+# bernoulli_classifier_doc.close()
 
-LogisticRegression_classifier = SklearnClassifier(LogisticRegression())
-LogisticRegression_classifier.train(feature_set)
+# LogisticRegression_classifier = SklearnClassifier(LogisticRegression())
+# LogisticRegression_classifier.train(feature_set)
 # print('LogisticRegression classifier accuracy',nltk.classify.accuracy(LogisticRegression_classifier, testing_set))
-LogisticRegression_classifier_doc = open('LogisticRegression.pkl','wb')
-pickle.dump(LogisticRegression_classifier,LogisticRegression_classifier_doc)
-LogisticRegression_classifier_doc.close()
+# LogisticRegression_classifier_doc = open('LogisticRegression.pkl','wb')
+# pickle.dump(LogisticRegression_classifier,LogisticRegression_classifier_doc)
+# LogisticRegression_classifier_doc.close()
 
-SGDClassifier_classifier = SklearnClassifier(SGDClassifier())
-SGDClassifier_classifier.train(feature_set)
+# SGDclassifier = SklearnClassifier(SGDClassifier())
+# SGDclassifier.train(feature_set)
 # print('SGDClassifier classifier accuracy',nltk.classify.accuracy(SGDClassifier_classifier, testing_set))
-SGDClassifier_classifier_doc = open('SGDClassifier.pkl','wb')
-pickle.dump(SGDClassifier_classifier,SGDClassifier_classifier_doc)
-SGDClassifier_classifier_doc.close()
+# SGDClassifier_classifier_doc = open('SGDClassifier.pkl','wb')
+# pickle.dump(SGDClassifier_classifier,SGDClassifier_classifier_doc)
+# SGDClassifier_classifier_doc.close()
 
-SVC_classifier = SklearnClassifier(SVC())
-SVC_classifier.train(feature_set)
+# SVC_classifier = SklearnClassifier(SVC())
+# SVC_classifier.train(feature_set)
 # print('SVC classifier accuracy',nltk.classify.accuracy(SVC_classifier, testing_set))
 # SVC_classifier_doc = open('SVCClassifier.pkl','wb')
 # pickle.dump(SVC_classifier,SVC_classifier_doc)
 # SVC_classifier_doc.close()
 
-NuSVC_classifier = SklearnClassifier(NuSVC())
-NuSVC_classifier.train(feature_set)
+# NuSVC_classifier = SklearnClassifier(NuSVC())
+# NuSVC_classifier.train(feature_set)
 # print('NuSVC classifier accuracy',nltk.classify.accuracy(NuSVC_classifier, testing_set))
-NuSVC_classifier_doc = open('NuSVC_classifier.pkl','wb')
-pickle.dump(NuSVC_classifier,NuSVC_classifier_doc)
-NuSVC_classifier_doc.close()
+# NuSVC_classifier_doc = open('NuSVC_classifier.pkl','wb')
+# pickle.dump(NuSVC_classifier,NuSVC_classifier_doc)
+# NuSVC_classifier_doc.close()
 
-LinearSVC_classifier = SklearnClassifier(LinearSVC())
-LinearSVC_classifier.train(feature_set)
+# LinearSVC_classifier = SklearnClassifier(LinearSVC())
+# LinearSVC_classifier.train(feature_set)
 # print('LinearSVC classifier accuracy',nltk.classify.accuracy(LinearSVC_classifier, training_set))
-LinearSVC_classifier_doc = open('LinearSVC_classifier.pkl','wb')
-pickle.dump(LinearSVC_classifier,LinearSVC_classifier_doc)
-LinearSVC_classifier_doc.close()
+# LinearSVC_classifier_doc = open('LinearSVC_classifier.pkl','wb')
+# pickle.dump(LinearSVC_classifier,LinearSVC_classifier_doc)
+# LinearSVC_classifier_doc.close()
 
 # save_classifier = open('NaiveBayesClassifier.pickle', 'wb')
 # pickle.dump(classifier, save_classifier)
 # save_classifier.close()
 
+with open('LinearSVC_classifier.pkl','rb') as fp:
+	LinearSVC_classifier = pickle.load(fp)
+	
+with open('NuSVC_classifier.pkl','rb') as fp:
+	NuSVC_classifier = pickle.load(fp)
+	
+with open('SGDClassifier.pkl','rb') as fp:
+	SGDclassifier = pickle.load(fp)
+
+with open('mnb_classifier.pkl','rb') as fp:
+	MultinomialNB_classifier = pickle.load(fp)
+
+with open('LogisticRegression.pkl','rb') as fp:
+	LogisticRegression_classifier = pickle.load(fp)
+
 voted_classifier = VoteClassifier(LinearSVC_classifier,
 								  NuSVC_classifier,
-								  SGDClassifier_classifier,
+								  SGDclassifier,
 								  MultinomialNB_classifier,
 								  LogisticRegression_classifier)
 
-# print("voted classifier accuracy percent", (nltk.classify.accuracy(voted_classifier, testing_set))*100)
+def sentiment(document):
+	feats = find_features(document)
+	print(feats)
+	return voted_classifier.classify(feats),voted_classifier.confidence(feats)
 
-# print("Classification:", voted_classifier.classify(testing_set[0][0]), "Confidence %:",voted_classifier.confidence(testing_set[0][0])*100)
-# print("Classification:", voted_classifier.classify(testing_set[1][0]), "Confidence %:",voted_classifier.confidence(testing_set[1][0])*100)
-# print("Classification:", voted_classifier.classify(testing_set[2][0]), "Confidence %:",voted_classifier.confidence(testing_set[2][0])*100)
-# print("Classification:", voted_classifier.classify(testing_set[3][0]), "Confidence %:",voted_classifier.confidence(testing_set[3][0])*100)
-# print("Classification:", voted_classifier.classify(testing_set[4][0]), "Confidence %:",voted_classifier.confidence(testing_set[4][0])*100)
-# print("Classification:", voted_classifier.classify(testing_set[5][0]), "Confidence %:",voted_classifier.confidence(testing_set[5][0])*100)
