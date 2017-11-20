@@ -145,9 +145,17 @@ feature_set = [(find_features(tweet), category) for (tweet, category) in sentime
 # testing_set = feature_set[9000:] 
 # classifier.show_most_informative_features(25)
 
+<<<<<<< HEAD
 # MultinomialNB_classifier = SklearnClassifier(MultinomialNB())
 # MultinomialNB_classifier.train(feature_set)
 # # print('MultinomialNB classifier accuracy',nltk.classify.accuracy(MultinomialNB_classifier, testing_set))
+=======
+# THE CLASSIFIER ARE CONVERTED TO THEIR PICKLE FILES
+
+# MultinomialNB_classifier = SklearnClassifier(MultinomialNB())
+# MultinomialNB_classifier.train(feature_set)
+# print('MultinomialNB classifier accuracy',nltk.classify.accuracy(MultinomialNB_classifier, testing_set))
+>>>>>>> b9baa53c264d136e0d66497a210e3f158d85823f
 # mnb_classifier_doc = open('mnb_classifier.pkl','wb')
 # pickle.dump(MultinomialNB_classifier,mnb_classifier_doc)
 # mnb_classifier_doc.close()
@@ -161,14 +169,22 @@ feature_set = [(find_features(tweet), category) for (tweet, category) in sentime
 
 # LogisticRegression_classifier = SklearnClassifier(LogisticRegression())
 # LogisticRegression_classifier.train(feature_set)
+<<<<<<< HEAD
 # # print('LogisticRegression classifier accuracy',nltk.classify.accuracy(LogisticRegression_classifier, testing_set))
+=======
+# print('LogisticRegression classifier accuracy',nltk.classify.accuracy(LogisticRegression_classifier, testing_set))
+>>>>>>> b9baa53c264d136e0d66497a210e3f158d85823f
 # LogisticRegression_classifier_doc = open('LogisticRegression.pkl','wb')
 # pickle.dump(LogisticRegression_classifier,LogisticRegression_classifier_doc)
 # LogisticRegression_classifier_doc.close()
 
 # SGDclassifier = SklearnClassifier(SGDClassifier())
 # SGDclassifier.train(feature_set)
+<<<<<<< HEAD
 # # print('SGDClassifier classifier accuracy',nltk.classify.accuracy(SGDClassifier_classifier, testing_set))
+=======
+# print('SGDClassifier classifier accuracy',nltk.classify.accuracy(SGDClassifier_classifier, testing_set))
+>>>>>>> b9baa53c264d136e0d66497a210e3f158d85823f
 # SGDClassifier_doc = open('SGDClassifier.pkl','wb')
 # pickle.dump(SGDclassifier,SGDClassifier_doc)
 # SGDClassifier_doc.close()
@@ -182,14 +198,22 @@ feature_set = [(find_features(tweet), category) for (tweet, category) in sentime
 
 # NuSVC_classifier = SklearnClassifier(NuSVC())
 # NuSVC_classifier.train(feature_set)
+<<<<<<< HEAD
 # # print('NuSVC classifier accuracy',nltk.classify.accuracy(NuSVC_classifier, testing_set))
+=======
+# print('NuSVC classifier accuracy',nltk.classify.accuracy(NuSVC_classifier, testing_set))
+>>>>>>> b9baa53c264d136e0d66497a210e3f158d85823f
 # NuSVC_classifier_doc = open('NuSVC_classifier.pkl','wb')
 # pickle.dump(NuSVC_classifier,NuSVC_classifier_doc)
 # NuSVC_classifier_doc.close()
 
 # LinearSVC_classifier = SklearnClassifier(LinearSVC())
 # LinearSVC_classifier.train(feature_set)
+<<<<<<< HEAD
 # # print('LinearSVC classifier accuracy',nltk.classify.accuracy(LinearSVC_classifier, training_set))
+=======
+# print('LinearSVC classifier accuracy',nltk.classify.accuracy(LinearSVC_classifier, training_set))
+>>>>>>> b9baa53c264d136e0d66497a210e3f158d85823f
 # LinearSVC_classifier_doc = open('LinearSVC_classifier.pkl','wb')
 # pickle.dump(LinearSVC_classifier,LinearSVC_classifier_doc)
 # LinearSVC_classifier_doc.close()
@@ -201,8 +225,13 @@ feature_set = [(find_features(tweet), category) for (tweet, category) in sentime
 with open('LinearSVC_classifier.pkl','rb') as fp:
 	LinearSVC_classifier = pickle.load(fp)
 	
+<<<<<<< HEAD
 with open('bernoulli_classifier.pkl','rb') as fp:
 	BernoulliNB_classifier = pickle.load(fp)
+=======
+with open('NuSVC_classifier.pkl','rb') as fp:
+	NuSVC_classifier = pickle.load(fp)
+>>>>>>> b9baa53c264d136e0d66497a210e3f158d85823f
 	
 with open('SGDClassifier.pkl','rb') as fp:
 	SGDclassifier = pickle.load(fp)
